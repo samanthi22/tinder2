@@ -88,6 +88,7 @@
       '/me/photos',
        function(response) {
          window.photos= response.data;
+         window.yesPhotos = [];
          displayNextPhoto();
        }
        )
@@ -96,6 +97,10 @@
      function displayNextPhoto() {
        document.getElementById("status").innerHTML = 
        '<img src="' + window.photos[0].source + '">';
+     }
+     
+     function yesClicked() {
+       window.yesPhotos.push(document.getElementById("status").src);
      }
     
 </script>
@@ -108,6 +113,8 @@
 
 <fb:login-button scope="public_profile,email,user_photos" onlogin="checkLoginState();">
 </fb:login-button>
+
+<button id="yesButton" onclick="yesClicked();"></button>
 
 <div id="status">
 </div>
